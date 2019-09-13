@@ -45,13 +45,15 @@ namespace ContForm
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
             DialogResult result;
 
-            // Displays the MessageBox.
-            result = MessageBox.Show("Tem certeza que deseja limpar o formulário?","", buttons);
-            if (result == System.Windows.Forms.DialogResult.Yes)
+            if(textBoxMail.Text != "" || textBoxName.Text != "" || textBoxNum.Text != "")
             {
-                // Closes the parent form.
-                limparForm();
+                result = MessageBox.Show("Tem certeza que deseja limpar o formulário?","", buttons);
+                if (result == System.Windows.Forms.DialogResult.Yes)
+                {
+                    limparForm();
+                }
             }
+            
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
@@ -81,11 +83,15 @@ namespace ContForm
                 this.nums.Clear();
                 this.tipo.Clear();
 
-                for (int i = 0; i < contatoPesquisa.Telefones.Count; i++)
+                if(textBoxMail.Text != "")
                 {
-                    this.nums.Add(contatoPesquisa.Telefones[i].Numero);
-                    this.tipo.Add(contatoPesquisa.Telefones[i].Tipo);
+                    for (int i = 0; i < contatoPesquisa.Telefones.Count; i++)
+                    {
+                        this.nums.Add(contatoPesquisa.Telefones[i].Numero);
+                        this.tipo.Add(contatoPesquisa.Telefones[i].Tipo);
+                    }
                 }
+                
 
                 listaDeNumeros();
             }
