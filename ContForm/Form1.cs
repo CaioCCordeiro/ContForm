@@ -13,7 +13,7 @@ namespace ContForm
         public Form1()
         {
             InitializeComponent();
-            
+            comboBoxTipo.SelectedIndex = 0;
         }
 
         public void listaDeNumeros()
@@ -33,7 +33,7 @@ namespace ContForm
             textBoxMail.Text = "";
             textBoxName.Text = "";
             textBoxNum.Text = "";
-            comboBoxTipo.Text = "";
+            comboBoxTipo.SelectedIndex = 0;
             listBoxNum.Items.Clear();
             listBoxTipo.Items.Clear();
             this.nums.Clear();
@@ -58,16 +58,24 @@ namespace ContForm
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            List<Fone> teladd = new List<Fone>();
-            for(int i = 0; i < this.nums.Count; i++)
+            if(textBoxMail.Text != "")
             {
-                Fone newtel = new Fone(this.nums[i],this.tipo[i]);
-                teladd.Add(newtel);
-            }
-            
-            contatos.Adicionar(new Contato(textBoxMail.Text, textBoxName.Text, teladd));
+                List<Fone> teladd = new List<Fone>();
+                for (int i = 0; i < this.nums.Count; i++)
+                {
+                    Fone newtel = new Fone(this.nums[i], this.tipo[i]);
+                    teladd.Add(newtel);
+                }
 
-            MessageBox.Show("Contato salvo");
+                contatos.Adicionar(new Contato(textBoxMail.Text, textBoxName.Text, teladd));
+
+                MessageBox.Show("Contato salvo");
+            }
+            else
+            {
+                MessageBox.Show("ERRO: Campo E-mail não pode estar em branco");
+            }
+
         }
 
         private void buttonSearch_Click(object sender, EventArgs e)
@@ -104,7 +112,7 @@ namespace ContForm
         {
             string emailexclui = textBoxMail.Text;
             contatos.Remover(new Contato(emailexclui));
-            MessageBox.Show("Usuário Removido");
+            MessageBox.Show("Usuário removido");
             limparForm();
         }
 
@@ -132,7 +140,9 @@ namespace ContForm
 
         private void ListBoxNum_SelectedIndexChanged(object sender, EventArgs e)
         {
+            listBoxTipo.SelectedIndex = listBoxNum.SelectedIndex;
             textBoxNum.Text = listBoxNum.SelectedItem.ToString();
+            comboBoxTipo.Text = listBoxTipo.Items[listBoxNum.SelectedIndex].ToString();
         }
     }
 }
