@@ -33,6 +33,7 @@
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.comboBoxTipo = new System.Windows.Forms.ComboBox();
             this.buttonRemove = new System.Windows.Forms.Button();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
@@ -44,7 +45,6 @@
             this.buttonSave = new System.Windows.Forms.Button();
             this.buttonDelete = new System.Windows.Forms.Button();
             this.buttonSearch = new System.Windows.Forms.Button();
-            this.comboBoxTipo = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -96,6 +96,18 @@
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Fones:";
+            // 
+            // comboBoxTipo
+            // 
+            this.comboBoxTipo.FormattingEnabled = true;
+            this.comboBoxTipo.Items.AddRange(new object[] {
+            "Residencial",
+            "Comercial",
+            "Celular"});
+            this.comboBoxTipo.Location = new System.Drawing.Point(152, 98);
+            this.comboBoxTipo.Name = "comboBoxTipo";
+            this.comboBoxTipo.Size = new System.Drawing.Size(89, 21);
+            this.comboBoxTipo.TabIndex = 11;
             // 
             // buttonRemove
             // 
@@ -158,6 +170,7 @@
             this.listBoxNum.Name = "listBoxNum";
             this.listBoxNum.Size = new System.Drawing.Size(120, 69);
             this.listBoxNum.TabIndex = 0;
+            this.listBoxNum.SelectedIndexChanged += new System.EventHandler(this.ListBoxNum_SelectedIndexChanged);
             // 
             // buttonNew
             // 
@@ -198,18 +211,6 @@
             this.buttonSearch.Text = "Pesquisar";
             this.buttonSearch.UseVisualStyleBackColor = true;
             this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
-            // 
-            // comboBoxTipo
-            // 
-            this.comboBoxTipo.FormattingEnabled = true;
-            this.comboBoxTipo.Items.AddRange(new object[] {
-            "Residencial",
-            "Comercial",
-            "Celular"});
-            this.comboBoxTipo.Location = new System.Drawing.Point(152, 98);
-            this.comboBoxTipo.Name = "comboBoxTipo";
-            this.comboBoxTipo.Size = new System.Drawing.Size(89, 21);
-            this.comboBoxTipo.TabIndex = 11;
             // 
             // Form1
             // 

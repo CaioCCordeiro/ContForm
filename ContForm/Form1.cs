@@ -123,10 +123,16 @@ namespace ContForm
 
         private void buttonRemove_Click(object sender, EventArgs e)
         {
+            this.tipo.RemoveAt(this.nums.IndexOf(textBoxNum.Text));
             this.nums.Remove(textBoxNum.Text);
-            this.tipo.Remove(comboBoxTipo.Text);
+            
 
             listaDeNumeros();
+        }
+
+        private void ListBoxNum_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            textBoxNum.Text = listBoxNum.SelectedItem.ToString();
         }
     }
 }
